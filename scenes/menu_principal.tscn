@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4d11y4vl1na1"]
+
+[ext_resource type="Script" uid="uid://tkjtrp85oyt8" path="res://scripts/menus/menu_principal.gd" id="1_ha5ei"]
+[ext_resource type="Texture2D" uid="uid://dw1yrc7j4tkys" path="res://assets/menus/principal/LandscapeUnderpainting.png" id="1_r1ajc"]
+[ext_resource type="Texture2D" uid="uid://cbc522scmdmp7" path="res://assets/menus/principal/foregrond.png" id="2_vlhkq"]
+[ext_resource type="Texture2D" uid="uid://dmk0knbofbr23" path="res://assets/menus/principal/dust_far.png" id="4_6ot5k"]
+[ext_resource type="Script" uid="uid://ch56jxwega0ir" path="res://scripts/menus/particulas_longe.gd" id="5_pjan2"]
+[ext_resource type="Texture2D" uid="uid://d3xfnu4o1yodp" path="res://assets/menus/principal/costa.png" id="6_y3vpi"]
+[ext_resource type="Script" uid="uid://uxqu6i3c2d2g" path="res://scripts/menus/personagem.gd" id="7_6png4"]
+[ext_resource type="Texture2D" uid="uid://grervjx3qakg" path="res://assets/menus/principal/dust_close.png" id="8_q71ho"]
+[ext_resource type="Script" uid="uid://d3h70j2xcemec" path="res://scripts/menus/particulas_perto.gd" id="9_5r4uc"]
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ha5ei")
+
+[node name="fundo" type="Sprite2D" parent="."]
+position = Vector2(961.5, 540.5)
+scale = Vector2(5.51966, 4.56967)
+texture = ExtResource("1_r1ajc")
+
+[node name="sombra" type="Sprite2D" parent="."]
+position = Vector2(964.5, 523)
+scale = Vector2(1.0224, 1.06852)
+texture = ExtResource("2_vlhkq")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(950, 521)
+
+[node name="particulas_longe" type="Sprite2D" parent="Node2D2"]
+position = Vector2(961.5, 540)
+scale = Vector2(0.48775, 0.37)
+texture = ExtResource("4_6ot5k")
+script = ExtResource("5_pjan2")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1401, 965)
+
+[node name="personagem" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_y3vpi")
+script = ExtResource("7_6png4")
+
+[node name="particulas_perto" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.15126, 0.190531)
+texture = ExtResource("8_q71ho")
+script = ExtResource("9_5r4uc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+localize_numeral_system = false
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="btn_comecar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Começar"
+
+[node name="btn_opcoes" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opções"
+
+[node name="btn_sair" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btn_comecar" to="." method="_on_btn_comecar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btn_sair" to="." method="_on_btn_sair_pressed"]
